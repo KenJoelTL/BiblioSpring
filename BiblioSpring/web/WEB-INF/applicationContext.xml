@@ -20,6 +20,28 @@
     p:username="${jdbc.username}"
     p:password="${jdbc.password}" /-->
 
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+      <property name="prefix" value="/WEB-INF/jsp/"/>
+      <property name="suffix" value=".jsp"/>
+    </bean>
+    
+    <bean id="connexion" class="com.jdbc.Connexion">
+    </bean>
+    
+    <bean id="emf" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+       <property name="persistenceUnitName" value="BiblioSpringPU"/>
+    </bean>
+    
+    <bean id="bookDao" class="com.dao.BookDao">
+        <!--<property name="connexion" ref="connexion"/> -->
+        <property name="entityFactory" ref="emf"/> 
+    </bean> 
+    
+    <bean name="bookService" class="com.services.BookService">
+        <property name="dao" ref="bookDao"/>
+    </bean>
+
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
 
 </beans>
