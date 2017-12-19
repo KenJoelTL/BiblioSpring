@@ -25,7 +25,7 @@ public class BookController {
     }
     
     @RequestMapping("/books")
-    public String welcome(ModelMap model) {
+    public String BooksList(ModelMap model) {
         List<Book> liste = this.bookService.getAll();
         model.addAttribute("titre", "Page de livre");
         model.addAttribute("liste", liste);
