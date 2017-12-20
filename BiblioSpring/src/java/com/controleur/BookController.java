@@ -40,12 +40,10 @@ public class BookController {
         return "listeLivre";
     }
     
-    @RequestMapping("/books/create")
-    public String BooksCreate(ModelMap model) {
-        List<Book> liste = this.bookService.getAll();
-        model.addAttribute("titre", "Page de livres");
-        model.addAttribute("liste", liste);
-        return "listeLivre";
+    @RequestMapping(method = RequestMethod.GET, value="/books/create")
+    public ModelAndView BooksShowCreateForm(ModelMap model) {
+        model.addAttribute("titre", "Ajout");
+        return new ModelAndView("ajouterLivre","book", new Book());
     }
     
     @RequestMapping(method = RequestMethod.GET, value="/books/update", params={"isbn"})
@@ -60,8 +58,11 @@ public class BookController {
             model.addAttribute("livre", b);
             return new ModelAndView("modifierLivre","book",b);
         }
-        else
-            return new ModelAndView("listeLivre","liste",liste);     
+        else{
+            model.addAttribute("titre", "Page de livres");
+            //return new ModelAndView("redirect:/books"); 
+            return new ModelAndView(new RedirectView("/books",true,false,false));
+        }    
     }
     
     @RequestMapping(method = RequestMethod.POST, value="/books/update")
@@ -69,7 +70,8 @@ public class BookController {
         if (result.hasErrors()) {
             return new RedirectView("/books/update/?isbn="+book.getIsbn(),true,false,true);
         }
-        this.bookService.update(book);
+        if(!this.bookService.update(book))
+            return new RedirectView("/books/update/?isbn="+book.getIsbn(), true, false, false);     
         
         return new RedirectView("/books", true, false, false);     
     }
