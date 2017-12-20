@@ -11,11 +11,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>${titre}</title>
+        <title>Biblio Spring</title>
     </head>
     <body>
         <h1>${titre}</h1>
-    </body>
+        <a href="books/create">Ajouter un livre &agrave; la biblioth&egrave;que</a>
     
     <div> 
         <table>
@@ -43,5 +43,6 @@
             </tbody>
         </table>
     </div>
+    </body>
     
 </html>

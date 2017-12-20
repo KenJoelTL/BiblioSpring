@@ -40,12 +40,23 @@ public class BookController {
         return "listeLivre";
     }
     
-    @RequestMapping("/books/create")
-    public String BooksCreate(ModelMap model) {
-        List<Book> liste = this.bookService.getAll();
-        model.addAttribute("titre", "Page de livres");
-        model.addAttribute("liste", liste);
-        return "listeLivre";
+    @RequestMapping(method = RequestMethod.GET, value="/books/create")
+    public ModelAndView BooksShowCreateForm(ModelMap model) {
+        model.addAttribute("titre", "Ajout");
+        return new ModelAndView("ajouterLivre","book", new Book());
+    }
+    
+    @RequestMapping(method = RequestMethod.POST, value="/books/create")
+    public View BooksCreate(@Validated @ModelAttribute("book")Book book, BindingResult result, ModelMap model) {
+        String action = "/books";
+        if (result.hasErrors() || book == null){
+            action += "/create";
+            return new RedirectView(action, true, false, false);     
+        }
+        if(!(this.bookService.add(book)))
+            action += "/create";
+
+        return new RedirectView(action, true, false, false);     
     }
     
     @RequestMapping(method = RequestMethod.GET, value="/books/update", params={"isbn"})
@@ -60,17 +71,22 @@ public class BookController {
             model.addAttribute("livre", b);
             return new ModelAndView("modifierLivre","book",b);
         }
-        else
-            return new ModelAndView("listeLivre","liste",liste);     
+        else{
+            model.addAttribute("titre", "Page de livres");
+            //return new ModelAndView("redirect:/books"); 
+            return new ModelAndView(new RedirectView("/books",true,false,false));
+        }    
     }
     
     @RequestMapping(method = RequestMethod.POST, value="/books/update")
     public View BooksUpdate(@Validated @ModelAttribute("book")Book book, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return new RedirectView("/books/update/?isbn="+book.getIsbn(),true,false,true);
+        if (book != null) {
+            if (result.hasErrors()) {
+                return new RedirectView("/books/update/?isbn="+book.getIsbn(),true,false,false);
+            }
+            if(!this.bookService.update(book))
+                return new RedirectView("/books/update/?isbn="+book.getIsbn(), true, false, false);     
         }
-        this.bookService.update(book);
-        
         return new RedirectView("/books", true, false, false);     
     }
     

@@ -17,7 +17,7 @@ public class BookService extends Service<Book>{
 
     @Override
     public boolean add(Book x) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.create(x);
     }
 
     @Override
