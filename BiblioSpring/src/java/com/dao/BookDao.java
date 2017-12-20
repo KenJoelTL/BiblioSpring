@@ -6,11 +6,14 @@
 package com.dao;
 
 import com.modele.Book;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -30,22 +33,56 @@ public class BookDao extends SqlDAO<Book>{
 
     @Override
     public boolean delete(Book x) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String q = "DELETE FROM book WHERE ISBN = ?";
+        
+        try {
+            PreparedStatement stm = connexion.getInstance().prepareStatement(q);
+            stm.setString(1, x.getIsbn());
+            return stm.executeUpdate()>0;
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+        
     }
 
     @Override
     public boolean update(Book x) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("UPDAAAAAATE");
+        return true;
     }
 
     @Override
     public Book findById(String x) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+               Book b = null;
+        try {
+            PreparedStatement stm = connexion.getInstance().prepareStatement("SELECT * FROM book WHERE ISBN=?");
+            stm.setString(1, x);
+            ResultSet res = stm.executeQuery();
+            if (res.next()){
+                b = new Book();
+                b.setIsbn(res.getString("ISBN"));
+                b.setAuthor(res.getString("AUTHOR"));
+                b.setTitle(res.getString("TITLE"));
+                b.setNbPages(res.getInt("NB_PAGES"));
+                b.setEdition(res.getString("EDITION"));
+                b.setLanguage(res.getString("LANGUAGE"));
+                b.setYear(res.getInt("YEAR"));
+                b.setDescription(res.getString("DESCRIPTION"));
+                b.setKeywords(res.getString("KEYWORDS"));
+            }
+            else {
+                return b;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return b;
     }
 
     @Override
     public Book findById(int x) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return findById(""+x);
     }
 
     @Override
@@ -77,6 +114,8 @@ public class BookDao extends SqlDAO<Book>{
                 b.setKeywords(res.getString("KEYWORDS"));
                 liste.add(b);
             }
+            stm.close();
+            res.close();
             
         } catch (SQLException e) {
             

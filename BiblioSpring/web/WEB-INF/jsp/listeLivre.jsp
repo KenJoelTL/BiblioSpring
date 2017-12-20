@@ -18,9 +18,30 @@
     </body>
     
     <div> 
-        <c:forEach var="b" items="${liste}">
-            <div>${b.isbn}</div>
-        </c:forEach>        
+        <table>
+            <thead>
+                <tr>
+                    
+                <th>
+                    ISBN
+                </th>
+                <th>
+                    Titre
+                </th>
+                </tr>
+            </thead>
+                
+            <tbody>   
+            <c:forEach var="b" items="${liste}">
+                <tr>
+                    <td>${b.isbn}</td>
+                    <td>${b.title}</td>
+                    <td><a href="books/update/?isbn=${b.isbn}">modifier</a></td>
+                    <td><a href="books/delete/?isbn=${b.isbn}">supprimer</a></td>
+                </tr>
+            </c:forEach>        
+            </tbody>
+        </table>
     </div>
     
 </html>

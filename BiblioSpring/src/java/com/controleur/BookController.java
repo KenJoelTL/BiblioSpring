@@ -10,7 +10,15 @@ import com.services.BookService;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
 
 /**
  *
@@ -25,11 +33,57 @@ public class BookController {
     }
     
     @RequestMapping("/books")
-    public String welcome(ModelMap model) {
+    public String BooksList(ModelMap model) {
         List<Book> liste = this.bookService.getAll();
-        model.addAttribute("titre", "Page de livre");
+        model.addAttribute("titre", "Page de livres");
         model.addAttribute("liste", liste);
         return "listeLivre";
     }
+    
+    @RequestMapping("/books/create")
+    public String BooksCreate(ModelMap model) {
+        List<Book> liste = this.bookService.getAll();
+        model.addAttribute("titre", "Page de livres");
+        model.addAttribute("liste", liste);
+        return "listeLivre";
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value="/books/update", params={"isbn"})
+    public ModelAndView BooksShowUpdateForm(@RequestParam("isbn") String isbn, ModelMap model) {
+        Book b = new Book();
+        b.setIsbn(isbn);
+        List<Book> liste = this.bookService.getAll();
+        int index = liste.indexOf(b);
+        if (index >= 0){
+            b = liste.get(index);
+            model.addAttribute("titre", "Modification");
+            model.addAttribute("livre", b);
+            return new ModelAndView("modifierLivre","book",b);
+        }
+        else
+            return new ModelAndView("listeLivre","liste",liste);     
+    }
+    
+    @RequestMapping(method = RequestMethod.POST, value="/books/update")
+    public View BooksUpdate(@Validated @ModelAttribute("book")Book book, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return new RedirectView("/books/update/?isbn="+book.getIsbn(),true,false,true);
+        }
+        this.bookService.update(book);
+        
+        return new RedirectView("/books", true, false, false);     
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value="/books/delete", params={"isbn"})
+    public View BooksDelete(@RequestParam("isbn") String isbn,ModelMap model) {
+        Book b = new Book();
+        b.setIsbn(isbn);
+        this.bookService.remove(b);/*
+        List<Book> liste = this.bookService.getAll();
+        model.addAttribute("liste", liste);*/
+        return new RedirectView("/books", true, false, false);
+
+    }
+    
     
 }
