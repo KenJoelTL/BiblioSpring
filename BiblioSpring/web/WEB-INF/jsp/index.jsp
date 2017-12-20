@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.modele.Book"%>
 <%@page import="com.services.BookService"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -16,16 +18,7 @@
                 the redirection in</i> <tt>redirect.jsp</tt> <i>to point to the new
                 welcome page and also update the welcome-file setting in</i>
             <tt>web.xml</tt>.</p>
-        <%
-        BookService b = new BookService();
-        for (Object elem : b.getBookListe()) {
-                System.out.println(elem.toString());
-            }
 
-        %>
-     
-        
-        
         
     </body>
 </html>

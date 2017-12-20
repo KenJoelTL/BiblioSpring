@@ -17,6 +17,7 @@ import org.springframework.web.context.ServletContextAware;
  */
 public class Connexion  implements ServletContextAware{
     private Connection connection;
+    
     private ServletContext servletContext;
     
     public Connection getInstance(){
