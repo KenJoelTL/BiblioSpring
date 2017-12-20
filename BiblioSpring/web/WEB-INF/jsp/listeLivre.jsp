@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>${titre}</h1>
-    </body>
+        <a href="books/create">Ajouter un livre &agrave; la biblioth&egrave;que</a>
     
     <div> 
         <table>
@@ -43,5 +43,6 @@
             </tbody>
         </table>
     </div>
+    </body>
     
 </html>

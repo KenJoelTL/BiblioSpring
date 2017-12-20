@@ -46,6 +46,19 @@ public class BookController {
         return new ModelAndView("ajouterLivre","book", new Book());
     }
     
+    @RequestMapping(method = RequestMethod.POST, value="/books/create")
+    public View BooksCreate(@Validated @ModelAttribute("book")Book book, BindingResult result, ModelMap model) {
+        String action = "/books";
+        if (result.hasErrors() || book == null){
+            action += "/create";
+            return new RedirectView(action, true, false, false);     
+        }
+        if(!(this.bookService.add(book)))
+            action += "/create";
+
+        return new RedirectView(action, true, false, false);     
+    }
+    
     @RequestMapping(method = RequestMethod.GET, value="/books/update", params={"isbn"})
     public ModelAndView BooksShowUpdateForm(@RequestParam("isbn") String isbn, ModelMap model) {
         Book b = new Book();
@@ -67,12 +80,13 @@ public class BookController {
     
     @RequestMapping(method = RequestMethod.POST, value="/books/update")
     public View BooksUpdate(@Validated @ModelAttribute("book")Book book, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return new RedirectView("/books/update/?isbn="+book.getIsbn(),true,false,true);
+        if (book != null) {
+            if (result.hasErrors()) {
+                return new RedirectView("/books/update/?isbn="+book.getIsbn(),true,false,false);
+            }
+            if(!this.bookService.update(book))
+                return new RedirectView("/books/update/?isbn="+book.getIsbn(), true, false, false);     
         }
-        if(!this.bookService.update(book))
-            return new RedirectView("/books/update/?isbn="+book.getIsbn(), true, false, false);     
-        
         return new RedirectView("/books", true, false, false);     
     }
     
