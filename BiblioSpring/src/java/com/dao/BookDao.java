@@ -49,7 +49,29 @@ public class BookDao extends SqlDAO<Book>{
     @Override
     public boolean update(Book x) {
         System.out.println("UPDAAAAAATE");
-        return true;
+        
+        String q = "UPDATE book SET AUTHOR = ?, TITLE = ?, NB_PAGES = ?, "
+                 + "EDITION = ?, LANGUAGE = ?, YEAR = ?, DESCRIPTION = ?, "
+                 + "KEYWORDS = ? WHERE ISBN = ?";
+        
+        try {
+            PreparedStatement stm = connexion.getInstance().prepareStatement(q);
+            stm.setString(1, x.getAuthor());
+            stm.setString(2, x.getTitle());
+            stm.setInt(3, x.getNbPages());
+            stm.setString(4, x.getEdition());
+            stm.setString(5, x.getLanguage());
+            stm.setInt(6, x.getYear());
+            stm.setString(7, x.getDescription());
+            stm.setString(8, x.getKeywords());
+            stm.setString(9, x.getIsbn());
+            return stm.executeUpdate()>0;
+        } catch (SQLException ex) {
+            Logger.getLogger(BookDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+        
     }
 
     @Override
