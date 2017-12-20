@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ajouterLivre
-    Created on : 2017-12-20, 01:30:41
+    Document   : modifierLivre
+    Created on : 2017-12-19, 20:34:58
     Author     : Joel
 --%>
 
@@ -14,13 +14,9 @@
         <title>Biblio Spring</title>
     </head>
     <body>
-        <h1>Ajout</h1>
-        <form:form method="POST" modelAttribute="book" >
+        <h1>Modification</h1>
+        <form:form method="POST" modelAttribute="book">
              <table>
-                <tr>
-                    <td><form:label path="isbn">ISBN</form:label></td>
-                    <td><form:input path="isbn"/></td>
-                </tr>
                 <tr>
                     <td><form:label path="title">Title</form:label></td>
                     <td><form:input path="title"/></td>
@@ -54,7 +50,7 @@
                     <td><form:input path="keywords"/></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Ajouter"/></td>
+                    <td><input type="submit" value="Modifier"/></td>
                 </tr>
             </table>
         </form:form>
