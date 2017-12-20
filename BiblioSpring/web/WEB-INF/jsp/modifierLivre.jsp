@@ -18,10 +18,6 @@
         <form:form method="POST" modelAttribute="book">
              <table>
                 <tr>
-                    <td><form:label path="isbn">ISBN</form:label></td>
-                    <td><form:input path="isbn" /></td>
-                </tr>
-                <tr>
                     <td><form:label path="title">Title</form:label></td>
                     <td><form:input path="title"/></td>
                 </tr>
