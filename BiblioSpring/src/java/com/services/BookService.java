@@ -22,12 +22,12 @@ public class BookService extends Service<Book>{
 
     @Override
     public boolean remove(Book x) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.delete(x);
     }
 
     @Override
     public boolean update(Book x) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.update(x);
     }
 
     @Override

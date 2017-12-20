@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Joel
  */
 @Controller
-public class CompteController {
+public class AccountController {
     
     @RequestMapping("/")
     public String login(ModelMap model) {

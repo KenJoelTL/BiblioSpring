@@ -2,22 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/src/java/com/jdbc/Connexion.java</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/web/WEB-INF/jsp/index.jsp</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/web/WEB-INF/applicationContext.xml</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/src/java/com/dao/BookDao.java</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/web/WEB-INF/main-servlet.xml</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/src/java/com/services/BookService.java</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/src/java/com/services/Service.java</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/web/WEB-INF/web.xml</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/src/java/com/dao/SqlDAO.java</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/web/WEB-INF/jsp/login.jsp</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/web/WEB-INF/jsp/listeLivre.jsp</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/web/META-INF/context.xml</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/src/conf/MANIFEST.MF</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/src/java/com/controleur/CompteController.java</file>
-            <file>file:/E:/Dossier%20d'école/Mes%20Documents/Session%206%20%5BAutomne%202017%5D/Hypermedia%20II/TP2/BiblioSpring/src/java/com/controleur/BookController.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
