@@ -20,7 +20,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author usager
+ * @author Joel
  */
 public class BookDao extends SqlDAO<Book>{
 
@@ -161,7 +161,8 @@ public class BookDao extends SqlDAO<Book>{
         } catch (SQLException e) {
             
         }
-        
+        return liste;
+
         /*
         
         List<Monnaie> liste = new LinkedList<>();
@@ -180,7 +181,6 @@ public class BookDao extends SqlDAO<Book>{
         }
         return liste;
         */
-        return liste;
     }
 /*
     public void setEntityFactory(EntityManagerFactory entityFactory) {

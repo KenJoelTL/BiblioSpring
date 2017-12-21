@@ -6,7 +6,6 @@
 package com.dao;
 
 import com.modele.Account;
-import com.modele.Account;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author usager
+ * @author Joel
  */
 public class AccountDao extends SqlDAO<Account>{
 

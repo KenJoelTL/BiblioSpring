@@ -6,6 +6,7 @@
                 http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
                 http://www.springframework.org/schema/mvc
                 http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+    <mvc:resources mapping="/ressources/**" location="/ressources/" cache-period="10000"/>
 
     <mvc:annotation-driven />
 
@@ -15,6 +16,7 @@
       <property name="suffix" value=".jsp"/>
     </bean>
  
+    
     <bean id="connexion" class="com.jdbc.Connexion">
     </bean>
  
