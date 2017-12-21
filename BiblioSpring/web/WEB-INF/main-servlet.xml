@@ -8,7 +8,6 @@
                 http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
     <mvc:annotation-driven />
-    
     <bean id="bookController" class="com.controleur.BookController">
             <property name="bookService" ref="bookService"/>
     </bean>

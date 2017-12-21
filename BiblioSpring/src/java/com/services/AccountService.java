@@ -36,7 +36,7 @@ public class AccountService extends Service<Account>{
     }
     
     public Account getAccountByEmail(String email) {
-        return ((AccountDao)dao).findByCourriel(email);
+        return ((AccountDao)dao).findByCourriel(email); // possible de le caster dans le construteur sans param
     }
     
     

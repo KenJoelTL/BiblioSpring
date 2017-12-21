@@ -14,6 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<c:url value="/ressources/css/style.css" />">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>Biblio Spring</title>
@@ -27,11 +28,11 @@
                 <a href="books/create" class="btn btn-primary">Ajouter un livre &agrave; la biblioth&egrave;que</a>        
             </div> 
             <div class="col-lg-6">
-                <a href="logout/" class="btn btn-success pull-right">Se déconnecter</a>
+                <a id="bDeconnexion" href="logout/" class="btn btn-success pull-right">Se déconnecter</a>
             </div>
         </div>
     
-        <table class="table table-hover table-responsive">
+        <table class="table table-hover table-responsive table-books">
             <thead>
                 <tr>                   
                     <th>ISBN</th>
