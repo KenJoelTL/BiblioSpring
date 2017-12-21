@@ -22,10 +22,16 @@
         <div class="container-fluid">
             
         <h1>${titre}</h1>
-        <a href="books/create" class="btn btn-primary">Ajouter un livre &agrave; la biblioth&egrave;que</a>
-        <a href="logout/" class="btn btn-success">Se déconnecter</a>
+        <div class="row">
+            <div class="col-lg-6">
+                <a href="books/create" class="btn btn-primary">Ajouter un livre &agrave; la biblioth&egrave;que</a>        
+            </div> 
+            <div class="col-lg-6">
+                <a href="logout/" class="btn btn-success pull-right">Se déconnecter</a>
+            </div>
+        </div>
     
-        <table class="table table-striped">
+        <table class="table table-hover table-responsive">
             <thead>
                 <tr>                   
                     <th>ISBN</th>

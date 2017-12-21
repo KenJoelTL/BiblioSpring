@@ -34,7 +34,7 @@
                     <td><form:input path="nbPages"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="edition">Edition</form:label></td>
+                    <td><form:label path="edition">&Eacute;dition</form:label></td>
                     <td><form:input path="edition"/></td>
                 </tr>
                 <tr>
@@ -42,7 +42,7 @@
                     <td><form:input path="language"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="year">Ann&eacute;</form:label></td>
+                    <td><form:label path="year">Ann&eacute;e</form:label></td>
                     <td><form:input path="year"/></td>
                 </tr>
                 <tr>
