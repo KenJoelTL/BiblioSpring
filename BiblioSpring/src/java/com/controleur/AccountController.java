@@ -36,16 +36,21 @@ public class AccountController {
     }
     
     @RequestMapping(method = RequestMethod.GET, value="/")
-    public String loginForm(ModelMap model) {
-        return "login";
+    public String loginForm(HttpSession session, ModelMap model) {
+        if(session.getAttribute("connecte") == null)
+            return "login";
+        else
+            return "redirect:/books";
     }
     
     @RequestMapping(method = RequestMethod.POST, value="/", params={"email","password"})
-    public View login(HttpSession session,@RequestParam("email") String email,@RequestParam("password") String password, ModelMap model ) {     
-        Account a = accountService.getAccountByEmail(email);
-        if (a.getPassword().equals(password)) {
-            session.setAttribute("connecte", a.getEmail());
-            return new RedirectView("/books", true, false, false);
+    public View login(HttpSession session,@RequestParam("email") String email,@RequestParam("password") String password, ModelMap model ) { 
+        if(!"".equals(email.trim()) && !"".equals(password.trim())){
+            Account a = accountService.getAccountByEmail(email);
+            if (a != null && a.getPassword().equals(password)) {
+                session.setAttribute("connecte", a.getEmail());
+                return new RedirectView("/books", true, false, false);
+            }
         }
         return new RedirectView("/", true, false, false);
     }
@@ -68,7 +73,7 @@ public class AccountController {
         return new RedirectView(action, true, false, false);     
     }
       
-    @RequestMapping(method = RequestMethod.GET, value="books/logout")
+    @RequestMapping(method = RequestMethod.GET, value="/logout")
     public View logout(HttpSession session, ModelMap model) {
         if(session.getAttribute("connecte") != null){
             session.invalidate();

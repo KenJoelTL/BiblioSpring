@@ -37,12 +37,12 @@ public class BookController {
     public String BooksList(HttpSession session, ModelMap model) {
         if(session.getAttribute("connecte") != null){
 
-        List<Book> liste = this.bookService.getAll();
-        model.addAttribute("titre", "Page de livres");
-        model.addAttribute("liste", liste);
-        return "listeLivre";
+            List<Book> liste = this.bookService.getAll();
+            model.addAttribute("titre", "Page de livres");
+            model.addAttribute("liste", liste);
+            return "index";
         }
-        return "login";
+        return "redirect:/";
     }
     
     @RequestMapping(method = RequestMethod.GET, value="/books/create")
@@ -52,7 +52,7 @@ public class BookController {
         model.addAttribute("titre", "Ajout");
         return new ModelAndView("ajouterLivre","book", new Book());
         }
-        return new ModelAndView("login"); 
+        return new ModelAndView(new RedirectView("/",true,false,false)); 
     }
     
     @RequestMapping(method = RequestMethod.POST, value="/books/create")
@@ -76,21 +76,20 @@ public class BookController {
     public ModelAndView BooksShowUpdateForm(HttpSession session,@RequestParam("isbn") String isbn, ModelMap model) {
         if(session.getAttribute("connecte") != null){
 
-        Book b = new Book();
-        b.setIsbn(isbn);
-        List<Book> liste = this.bookService.getAll();
-        int index = liste.indexOf(b);
-        if (index >= 0){
-            b = liste.get(index);
-            model.addAttribute("titre", "Modification");
-            model.addAttribute("livre", b);
-            return new ModelAndView("modifierLivre","book",b);
-        }
-        else{
-            model.addAttribute("titre", "Page de livres");
-            //return new ModelAndView("redirect:/books"); 
-            return new ModelAndView(new RedirectView("/books",true,false,false));
-        }
+            Book b = new Book();
+            b.setIsbn(isbn);
+            List<Book> liste = this.bookService.getAll();
+            int index = liste.indexOf(b);
+            if (index >= 0){
+                b = liste.get(index);
+                model.addAttribute("titre", "Modification");
+                model.addAttribute("livre", b);
+                return new ModelAndView("modifierLivre","book",b);
+            }
+            else{
+                //return new ModelAndView("redirect:/books"); 
+                return new ModelAndView(new RedirectView("/books",true,false,false));
+            }
         
         }
         return new ModelAndView(new RedirectView("/",true,false,false));
@@ -100,15 +99,14 @@ public class BookController {
     @RequestMapping(method = RequestMethod.POST, value="/books/update")
     public View BooksUpdate(HttpSession session,@Validated @ModelAttribute("book")Book book, BindingResult result, ModelMap model) {
         if(session.getAttribute("connecte") != null){
-
-        if (book != null) {
-            if (result.hasErrors()) {
-                return new RedirectView("/books/update/?isbn="+book.getIsbn(),true,false,false);
+            if (book != null) {
+                if (result.hasErrors()) {
+                    return new RedirectView("/books/update/?isbn="+book.getIsbn(),true,false,false);
+                }
+                if(!this.bookService.update(book))
+                    return new RedirectView("/books/update/?isbn="+book.getIsbn(), true, false, false);     
             }
-            if(!this.bookService.update(book))
-                return new RedirectView("/books/update/?isbn="+book.getIsbn(), true, false, false);     
-        }
-        return new RedirectView("/books", true, false, false);     
+            return new RedirectView("/books", true, false, false);     
         }
         return new RedirectView("/", true, false, false);
 
@@ -119,9 +117,7 @@ public class BookController {
         if(session.getAttribute("connecte") != null){
             Book b = new Book();
             b.setIsbn(isbn);
-            this.bookService.remove(b);/*
-            List<Book> liste = this.bookService.getAll();
-            model.addAttribute("liste", liste);*/
+            this.bookService.remove(b);
             return new RedirectView("/books", true, false, false);
         }
         return new RedirectView("/", true, false, false);

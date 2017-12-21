@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author usager
+ * @author Joel
  */
 public class AccountService extends Service<Account>{
 
