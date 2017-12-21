@@ -20,7 +20,7 @@ import javax.persistence.Query;
 
 /**
  *
- * @author Joel
+ * @author usager
  */
 public class BookDao extends SqlDAO<Book>{
 

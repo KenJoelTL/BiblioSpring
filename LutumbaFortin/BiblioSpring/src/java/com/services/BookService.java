@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
 *
-* @author Joel
+* @author Moumene
 */
 public class BookService extends Service<Book>{
 

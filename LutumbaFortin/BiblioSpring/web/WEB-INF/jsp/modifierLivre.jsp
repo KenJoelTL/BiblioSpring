@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ajouterLivre
-    Created on : 2017-12-20, 01:30:41
+    Document   : modifierLivre
+    Created on : 2017-12-19, 20:34:58
     Author     : Joel
 --%>
 
@@ -14,19 +14,15 @@
         <title>Biblio Spring</title>
     </head>
     <body>
-        <h1>Ajout</h1>
-        <form:form method="POST" modelAttribute="book" >
+        <h1>Modification</h1>
+        <form:form method="POST" modelAttribute="book">
              <table>
                 <tr>
-                    <td><form:label path="isbn">ISBN</form:label></td>
-                    <td><form:input path="isbn"/></td>
-                </tr>
-                <tr>
-                    <td><form:label path="title">Titre</form:label></td>
+                    <td><form:label path="title">Title</form:label></td>
                     <td><form:input path="title"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="author">Auteur</form:label></td>
+                    <td><form:label path="author">Author</form:label></td>
                     <td><form:input path="author"/></td>
                 </tr>
                 <tr>
@@ -38,11 +34,11 @@
                     <td><form:input path="edition"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="language">Langage</form:label></td>
+                    <td><form:label path="language">Language</form:label></td>
                     <td><form:input path="language"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="year">Ann&eacute;</form:label></td>
+                    <td><form:label path="year">Year</form:label></td>
                     <td><form:input path="year"/></td>
                 </tr>
                 <tr>
@@ -50,11 +46,11 @@
                     <td><form:input path="description"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="keywords">Mots-cl&eacute;s</form:label></td>
+                    <td><form:label path="keywords">Keywords</form:label></td>
                     <td><form:input path="keywords"/></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Ajouter"/></td>
+                    <td><input type="submit" value="Modifier"/></td>
                 </tr>
             </table>
         </form:form>

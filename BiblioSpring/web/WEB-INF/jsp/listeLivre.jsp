@@ -11,23 +11,33 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>Biblio Spring</title>
     </head>
     <body>
+        <div class="container-fluid">
+            
         <h1>${titre}</h1>
-        <a href="books/create">Ajouter un livre &agrave; la biblioth&egrave;que</a>
+        <a href="books/create" class="btn btn-primary">Ajouter un livre &agrave; la biblioth&egrave;que</a>
+        <a href="logout/" class="btn btn-success">Se déconnecter</a>
     
-    <div> 
-        <table>
+        <table class="table table-striped">
             <thead>
-                <tr>
-                    
-                <th>
-                    ISBN
-                </th>
-                <th>
-                    Titre
-                </th>
+                <tr>                   
+                    <th>ISBN</th>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Langage</th>
+                    <th>Edition</th>
+                    <th>Ann&eacute;e</th>
+                    <th>Description</th>
+                    <th>Mots-clé</th>
+
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
                 
@@ -36,13 +46,19 @@
                 <tr>
                     <td>${b.isbn}</td>
                     <td>${b.title}</td>
-                    <td><a href="books/update/?isbn=${b.isbn}">modifier</a></td>
-                    <td><a href="books/delete/?isbn=${b.isbn}">supprimer</a></td>
+                    <td>${b.author}</td>
+                    <td>${b.language}</td>
+                    <td>${b.edition}</td>
+                    <td>${b.year}</td>
+                    <td>${b.description}</td>
+                    <td>${b.keywords}</td>
+                    <td><a href="books/update/?isbn=${b.isbn}" class="btn btn-link">modifier</a></td><td> <a href="books/delete/?isbn=${b.isbn}" class="btn btn-link">supprimer</a></td>
                 </tr>
             </c:forEach>        
             </tbody>
         </table>
-    </div>
+
+        </div>
     </body>
     
 </html>

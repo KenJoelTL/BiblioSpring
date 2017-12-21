@@ -22,11 +22,11 @@
                     <td><form:input path="isbn"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="title">Titre</form:label></td>
+                    <td><form:label path="title">Title</form:label></td>
                     <td><form:input path="title"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="author">Auteur</form:label></td>
+                    <td><form:label path="author">Author</form:label></td>
                     <td><form:input path="author"/></td>
                 </tr>
                 <tr>
@@ -38,11 +38,11 @@
                     <td><form:input path="edition"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="language">Langage</form:label></td>
+                    <td><form:label path="language">Language</form:label></td>
                     <td><form:input path="language"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="year">Ann&eacute;</form:label></td>
+                    <td><form:label path="year">Year</form:label></td>
                     <td><form:input path="year"/></td>
                 </tr>
                 <tr>
@@ -50,7 +50,7 @@
                     <td><form:input path="description"/></td>
                 </tr>
                 <tr>
-                    <td><form:label path="keywords">Mots-cl&eacute;s</form:label></td>
+                    <td><form:label path="keywords">Keywords</form:label></td>
                     <td><form:input path="keywords"/></td>
                 </tr>
                 <tr>
