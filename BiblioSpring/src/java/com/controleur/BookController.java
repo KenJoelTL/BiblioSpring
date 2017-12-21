@@ -59,17 +59,17 @@ public class BookController {
     public View BooksCreate(HttpSession session,@Validated @ModelAttribute("book")Book book, BindingResult result, ModelMap model) {
         if(session.getAttribute("connecte") != null){
 
-        String action = "/books";
-        if (result.hasErrors() || book == null){
-            action += "/create";
-            return new RedirectView(action, true, false, false);     
-        }
-        if(!(this.bookService.add(book)))
-            action += "/create";
+            String action = "/books";
+            if (result.hasErrors() || book == null){
+                action += "/create";
+                return new RedirectView(action, true, false, false);     
+            }
+            if(book.getIsbn()  != null || "".equals(book.getIsbn().trim()) || !(this.bookService.add(book)))
+                action += "/create";
 
-        return new RedirectView(action, true, false, false); 
+            return new RedirectView(action, true, false, false); 
         }
-       return  new RedirectView("/",true,false,false);    
+        return  new RedirectView("/",true,false,false);    
     }
     
     @RequestMapping(method = RequestMethod.GET, value="/books/update", params={"isbn"})

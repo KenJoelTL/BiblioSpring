@@ -67,7 +67,8 @@ public class AccountController {
             action += "account/create";
             return new RedirectView(action, true, false, false);     
         }
-        if(!(this.accountService.add(account)))
+        if(account.getEmail() == null || account.getPassword() == null || "".equals(account.getEmail().trim()) 
+            || "".equals(account.getEmail().trim()) || !(this.accountService.add(account)))
             action += "account/create";
 
         return new RedirectView(action, true, false, false);     
