@@ -64,7 +64,7 @@ public class BookController {
                 action += "/create";
                 return new RedirectView(action, true, false, false);     
             }
-            if(book.getIsbn()  != null || "".equals(book.getIsbn().trim()) || !(this.bookService.add(book)))
+            if(book.getIsbn()  == null || "".equals(book.getIsbn().trim()) || !(this.bookService.add(book)))
                 action += "/create";
 
             return new RedirectView(action, true, false, false); 
